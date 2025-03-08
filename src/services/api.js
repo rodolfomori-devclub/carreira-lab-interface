@@ -25,58 +25,37 @@ export const fetchObjectives = async () => {
 };
 
 /**
- * Envia uma solicitação de análise de perfil LinkedIn ou verifica o status
+ * Envia uma solicitação de análise de perfil LinkedIn
  * @param {string} linkedinUrl - URL do perfil do LinkedIn
  * @param {string} objective - ID do objetivo selecionado
- * @param {string} [currentStage='default'] - Estágio atual do processo
- * @returns {Promise<Object>} Resultado da análise ou status atual
+ * @returns {Promise<Object>} Resultado da análise
  */
-export const analyzeProfile = async (linkedinUrl, objective, currentStage = 'default') => {
+export const analyzeProfile = async (linkedinUrl, objective) => {
   try {
     // Mostrar mensagem de análise em andamento
-    console.log(`${currentStage === 'default' ? 'Iniciando' : 'Verificando'} análise do perfil: ${linkedinUrl}`);
-    
-    // Carregar cookies do armazenamento local para enviá-los junto com a requisição
-    // (normalmente seria gerenciado pelo backend, mas mantemos essa opção)
-    const cookiesData = JSON.parse(localStorage.getItem('linkedin_cookies') || '[]');
-    
-    // Endpoint a ser chamado (diferente se for uma verificação de status)
-    const endpoint = currentStage === 'default' ? '/scrape' : '/status';
+    console.log(`Iniciando análise do perfil: ${linkedinUrl} para objetivo: ${objective}`);
     
     // Fazer a requisição ao backend
-    const response = await api.post(endpoint, {
+    const response = await api.post('/scrape', {
       profileUrl: linkedinUrl,
-      objective,
-      cookies: cookiesData.length > 0 ? cookiesData : undefined,
-      stage: currentStage
+      objective
     }, {
-      // Timeout depende do estágio
-      timeout: currentStage === 'default' ? 60000 : 10000 // 1 minuto para primeira chamada, 10s para verificações
+      // Aumentar o timeout para permitir scraping + análise GPT (5 minutos)
+      timeout: 300000
     });
     
-    // Verificar se a resposta contém status ou dados completos
-    if (response.data) {
-      if (response.data.status === 'analysis_complete' || (response.data.success && response.data.data?.analysis)) {
-        console.log('Análise concluída com sucesso');
-      } else if (response.data.status) {
-        console.log(`Status atual: ${response.data.status}`);
-      }
-      
-      // Retornar os dados completos
-      return response.data;
-    } else {
-      throw new Error('Resposta inválida do servidor');
-    }
+    // Log de sucesso
+    console.log('Análise concluída com sucesso');
+    
+    return response.data;
   } catch (error) {
     console.error('Erro ao analisar perfil:', error);
     
-    // Se o erro contiver informações sobre o estágio, retorná-las
-    if (error.response?.data?.status === 'in_progress') {
-      return {
-        status: 'in_progress',
-        stage: error.response.data.stage || currentStage,
-        note: error.response.data.note || '',
-        estimatedCompletion: error.response.data.estimatedCompletion
+    // Verificar se é um erro que requer contato com o suporte
+    if (error.response?.data?.contactSupport === true) {
+      throw {
+        message: error.response.data.message || 'Erro no acesso ao LinkedIn. Por favor, contate o suporte.',
+        contactSupport: true
       };
     }
     
@@ -101,24 +80,10 @@ export const analyzeProfile = async (linkedinUrl, objective, currentStage = 'def
     }
     
     // Rethrow com mensagem mais informativa
-    const enhancedError = new Error(errorMessage);
-    enhancedError.originalError = error;
-    throw enhancedError;
-  }
-};
-
-/**
- * Verifica o status atual de uma análise em andamento
- * @param {string} analysisId - ID da análise em andamento
- * @returns {Promise<Object>} Status atual da análise
- */
-export const checkAnalysisStatus = async (analysisId) => {
-  try {
-    const response = await api.get(`/status/${analysisId}`);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao verificar status da análise:', error);
-    throw error;
+    throw {
+      message: errorMessage,
+      originalError: error
+    };
   }
 };
 
