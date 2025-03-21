@@ -4,10 +4,10 @@ import React from 'react';
 const AnalysisNote = ({ note, type = 'info' }) => {
   // Mapear tipos para estilos CSS
   const styles = {
-    info: 'bg-blue-50 border-blue-400 text-blue-800',
-    warning: 'bg-yellow-50 border-yellow-400 text-yellow-800',
-    error: 'bg-red-50 border-red-400 text-red-800',
-    success: 'bg-green-50 border-green-400 text-green-800'
+    info: 'bg-blue-50 dark:bg-blue-900/20 border-blue-400 dark:border-blue-700 text-blue-800 dark:text-blue-300',
+    warning: 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400 dark:border-yellow-700 text-yellow-800 dark:text-yellow-300',
+    error: 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-700 text-red-800 dark:text-red-300',
+    success: 'bg-green-50 dark:bg-green-900/20 border-green-400 dark:border-green-700 text-green-800 dark:text-green-300'
   };
   
   // Mapear tipos para ícones
@@ -40,7 +40,7 @@ const AnalysisNote = ({ note, type = 'info' }) => {
   }
   
   return (
-    <div className={`border-l-4 p-4 mb-4 ${styles[type]}`}>
+    <div className={`border-l-4 p-4 mb-4 ${styles[type]} transform transition-all duration-300 hover:scale-102 animate-fade-in`}>
       <div className="flex items-center">
         {icons[type]}
         <div>

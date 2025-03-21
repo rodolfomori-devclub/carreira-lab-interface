@@ -1,6 +1,7 @@
 // frontend/src/components/Header.jsx
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,46 +11,50 @@ const Header = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white dark:bg-secondary shadow-sm transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-indigo-600 text-2xl font-bold">DevClub</span>
-              <span className="ml-2 text-gray-600">LinkedIn Analyzer</span>
+              <span className="text-primary dark:text-primary-light text-2xl font-bold transition-colors">DevClub</span>
+              <span className="ml-2 text-text-light dark:text-text-dark transition-colors">CarreiraLab</span>
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
-              className={`font-medium ${
+              className={`font-medium transition-colors ${
                 isActive('/') 
-                  ? 'text-indigo-600' 
-                  : 'text-gray-500 hover:text-indigo-600'
+                  ? 'text-primary dark:text-primary-light' 
+                  : 'text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary-light'
               }`}
             >
               Home
             </Link>
             <Link 
-              to="/analysis" 
-              className={`font-medium ${
+              to="https://go.rodolfomori.com.br/suporte" 
+              className={`font-medium transition-colors ${
                 isActive('/analysis') 
-                  ? 'text-indigo-600' 
-                  : 'text-gray-500 hover:text-indigo-600'
+                  ? 'text-primary dark:text-primary-light' 
+                  : 'text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary-light'
               }`}
             >
-              Analisar Perfil
+              Suporte
             </Link>
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </nav>
           
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <ThemeToggle />
             <button 
               type="button"
-              className="text-gray-500 hover:text-indigo-600 focus:outline-none"
+              className="ml-2 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary-light transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,15 +70,15 @@ const Header = () => {
         
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden animate-slide-down">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link 
                 to="/" 
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/') 
-                    ? 'bg-indigo-50 text-indigo-600' 
-                    : 'text-gray-500 hover:bg-indigo-50 hover:text-indigo-600'
-                }`}
+                    ? 'bg-primary-light/10 dark:bg-primary-dark/20 text-primary dark:text-primary-light' 
+                    : 'text-text-muted-light dark:text-text-muted-dark hover:bg-primary-light/10 dark:hover:bg-primary-dark/20 hover:text-primary dark:hover:text-primary-light'
+                } transition-colors`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
@@ -82,9 +87,9 @@ const Header = () => {
                 to="/analysis" 
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/analysis') 
-                    ? 'bg-indigo-50 text-indigo-600' 
-                    : 'text-gray-500 hover:bg-indigo-50 hover:text-indigo-600'
-                }`}
+                    ? 'bg-primary-light/10 dark:bg-primary-dark/20 text-primary dark:text-primary-light' 
+                    : 'text-text-muted-light dark:text-text-muted-dark hover:bg-primary-light/10 dark:hover:bg-primary-dark/20 hover:text-primary dark:hover:text-primary-light'
+                } transition-colors`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Analisar Perfil

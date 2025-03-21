@@ -36,6 +36,8 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+
+
       
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
