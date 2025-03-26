@@ -100,7 +100,7 @@ const HomeCarreiraLab = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               {/* Análise de LinkedIn */}
               <Link 
-                to="/analysis" 
+                // to="/analysis" 
                 className="bg-white dark:bg-secondary-light rounded-lg p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 duration-300 border-2 border-transparent hover:border-primary group animate-slide-up"
                 style={{ animationDelay: '0.1s' }}
               >
@@ -110,7 +110,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Análise de LinkedIn
+                  Análise de LinkedIn (Em breve)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Receba uma análise completa do seu perfil LinkedIn, identificando pontos fortes, 
@@ -130,7 +130,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Fale com a Fernanda
+                  Fale com a Fernanda (Em Breve)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Tire suas dúvidas sobre carreira, processos seletivos, currículos e entrevistas.
@@ -150,7 +150,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Entrevistas com a Fernanda
+                  Entrevistas com a Fernanda (Em Breve)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Pratique para entrevistas técnicas e comportamentais com simulações realistas e receba 
@@ -180,7 +180,7 @@ const HomeCarreiraLab = () => {
             </div>
             
             {/* Call to Action */}
-            <div className="text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
+            {/* <div className="text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
               <p className="text-lg mb-4 text-text-light dark:text-text-dark">
                 Pronto para alavancar sua carreira?
               </p>
@@ -190,7 +190,7 @@ const HomeCarreiraLab = () => {
               >
                 Começar agora
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
