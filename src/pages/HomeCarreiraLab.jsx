@@ -98,6 +98,24 @@ const HomeCarreiraLab = () => {
             
             {/* Botões de Serviço */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <a 
+                href="https://entrevistaslab.devclub.com.br/" 
+                className="bg-white dark:bg-secondary-light rounded-lg p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 duration-300 border-2 border-transparent hover:border-primary group animate-slide-up"
+                style={{ animationDelay: '0.3s' }}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 group-hover:shadow-neon transition-shadow animate-pulse-slow">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  Entrevistas com a Fernanda (NOVIDADE 🎁)
+                </h3>
+                <p className="text-text-muted-light dark:text-text-muted-dark">
+                  Pratique para entrevistas técnicas e comportamentais com simulações realistas e receba 
+                  feedbacks detalhados para melhorar seu desempenho.
+                </p>
+              </a>
               {/* Análise de LinkedIn */}
               <Link 
                 // to="/analysis" 
@@ -110,7 +128,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Análise de LinkedIn (Em breve)
+                  Análise de LinkedIn (Em Breve ⏳)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Receba uma análise completa do seu perfil LinkedIn, identificando pontos fortes, 
@@ -130,7 +148,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Fale com a Fernanda (Em Breve)
+                  Fale com a Fernanda ((Em Breve ⏳)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Tire suas dúvidas sobre carreira, processos seletivos, currículos e entrevistas.
@@ -139,24 +157,7 @@ const HomeCarreiraLab = () => {
               </a>
               
               {/* Entrevistas com a Fernanda */}
-              <a 
-                href="#" 
-                className="bg-white dark:bg-secondary-light rounded-lg p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 duration-300 border-2 border-transparent hover:border-primary group animate-slide-up"
-                style={{ animationDelay: '0.3s' }}
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 group-hover:shadow-neon transition-shadow animate-pulse-slow">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Entrevistas com a Fernanda (Em Breve)
-                </h3>
-                <p className="text-text-muted-light dark:text-text-muted-dark">
-                  Pratique para entrevistas técnicas e comportamentais com simulações realistas e receba 
-                  feedbacks detalhados para melhorar seu desempenho.
-                </p>
-              </a>
+    
               
               {/* LabVagas */}
               <a 
@@ -170,7 +171,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  LabVagas
+                  LabVagas (Em Breve ⏳)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Acesse vagas exclusivas selecionadas especialmente para alunos do DevClub
