@@ -148,7 +148,7 @@ const HomeCarreiraLab = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Fale com a Fernanda ((Em Breve ⏳)
+                  Fale com a Fernanda (Em Breve ⏳)
                 </h3>
                 <p className="text-text-muted-light dark:text-text-muted-dark">
                   Tire suas dúvidas sobre carreira, processos seletivos, currículos e entrevistas.
