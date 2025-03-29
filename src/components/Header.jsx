@@ -1,4 +1,4 @@
-// frontend/src/components/Header.jsx
+// src/components/Header.jsx (atualizado)
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -35,12 +35,20 @@ const Header = () => {
               Home
             </Link>
             <Link 
-              to="https://go.rodolfomori.com.br/suporte" 
+              to="/chat" 
               className={`font-medium transition-colors ${
-                isActive('/analysis') 
+                isActive('/chat') 
                   ? 'text-primary dark:text-primary-light' 
                   : 'text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary-light'
               }`}
+            >
+              Chat Recrutadora
+            </Link>
+            <Link 
+              to="https://go.rodolfomori.com.br/suporte" 
+              className="font-medium text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary-light transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Suporte
             </Link>
@@ -84,15 +92,24 @@ const Header = () => {
                 Home
               </Link>
               <Link 
-                to="/analysis" 
+                to="/chat" 
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive('/analysis') 
+                  isActive('/chat') 
                     ? 'bg-primary-light/10 dark:bg-primary-dark/20 text-primary dark:text-primary-light' 
                     : 'text-text-muted-light dark:text-text-muted-dark hover:bg-primary-light/10 dark:hover:bg-primary-dark/20 hover:text-primary dark:hover:text-primary-light'
                 } transition-colors`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Analisar Perfil
+                Chat Recrutadora
+              </Link>
+              <Link 
+                to="https://go.rodolfomori.com.br/suporte"
+                className="block px-3 py-2 rounded-md text-base font-medium text-text-muted-light dark:text-text-muted-dark hover:bg-primary-light/10 dark:hover:bg-primary-dark/20 hover:text-primary dark:hover:text-primary-light transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Suporte
               </Link>
             </div>
           </div>

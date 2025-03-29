@@ -137,24 +137,24 @@ const HomeCarreiraLab = () => {
               </Link>
               
               {/* Fale com a Fernanda */}
-              <a 
-                href="#" 
-                className="bg-white dark:bg-secondary-light rounded-lg p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 duration-300 border-2 border-transparent hover:border-primary group animate-slide-up"
-                style={{ animationDelay: '0.2s' }}
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 group-hover:shadow-neon transition-shadow animate-pulse-slow">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Fale com a Fernanda (Em Breve ⏳)
-                </h3>
-                <p className="text-text-muted-light dark:text-text-muted-dark">
-                  Tire suas dúvidas sobre carreira, processos seletivos, currículos e entrevistas.
-                  Conte com o apoio personalizado de uma recrutadora experiente.
-                </p>
-              </a>
+              <Link 
+  to="/chat" 
+  className="bg-white dark:bg-secondary-light rounded-lg p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105 duration-300 border-2 border-transparent hover:border-primary group animate-slide-up"
+  style={{ animationDelay: '0.2s' }}
+>
+  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-2xl mb-4 group-hover:shadow-neon transition-shadow animate-pulse-slow">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+    </svg>
+  </div>
+  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+    Fale com a Fernanda
+  </h3>
+  <p className="text-text-muted-light dark:text-text-muted-dark">
+    Tire suas dúvidas sobre carreira, processos seletivos, currículos e entrevistas.
+    Conte com o apoio personalizado de uma recrutadora experiente.
+  </p>
+</Link>
               
               {/* Entrevistas com a Fernanda */}
     

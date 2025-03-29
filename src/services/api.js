@@ -10,6 +10,55 @@ const api = axios.create({
   },
 });
 
+// Adicionar ao arquivo src/services/api.js
+
+/**
+ * Envia uma mensagem para o chatbot e recebe uma resposta
+ * @param {string} message - Mensagem do usuário
+ * @param {string} role - Papel do assistente (por padrão 'recruiter')
+ * @param {Array} history - Histórico de mensagens anterior
+ * @returns {Promise<Object>} Resposta do chatbot
+ */
+export const sendChatMessage = async (message, role = 'recruiter', history = []) => {
+  try {
+    // Fazer a requisição ao backend
+    const response = await api.post('/chat', {
+      message,
+      role,
+      history
+    });
+    
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao enviar mensagem para o chat:', error);
+    
+    // Extrair detalhes úteis do erro para exibição ao usuário
+    let errorMessage = 'Erro ao processar sua mensagem.';
+    
+    if (error.response) {
+      // Erro com resposta do servidor
+      const statusCode = error.response.status;
+      const serverError = error.response.data?.message || 'Erro desconhecido no servidor';
+      
+      errorMessage = `Erro ${statusCode}: ${serverError}`;
+    } else if (error.request) {
+      // Erro sem resposta (timeout, network issue)
+      errorMessage = error.message || 'Erro de conexão com o servidor. Verifique sua internet ou tente novamente mais tarde.';
+      
+      // Mensagem específica para timeout
+      if (error.code === 'ECONNABORTED') {
+        errorMessage = 'A resposta demorou mais do que o esperado. Por favor, tente novamente.';
+      }
+    }
+    
+    // Rethrow com mensagem mais informativa
+    throw {
+      message: errorMessage,
+      originalError: error
+    };
+  }
+};
+
 /**
  * Busca os objetivos disponíveis para análise de perfil
  * @returns {Promise<Array>} Lista de objetivos
